@@ -1,36 +1,19 @@
-# program for
-# Pascal's Triangle
+# A O(n^2) time and O(1) extra
+# space method for Pascal's Triangle
 
-# Function to print
-# first n lines of
-# Pascal's Triangle
-def printPascal(n) :
-	
-	# Iterate through every line
-	# and print entries in it
-	for line in range(0, n) :
-		
-		# Every line has number of
-		# integers equal to line
-		# number
-		for i in range(0, line + 1) :
-			print(binomialCoeff(line, i),
-				" ", end = "")
-		print()
-	
+# Pascal function
+def printPascal(n):
 
-# See https://www.geeksforgeeks.org/space-and-time-efficient-binomial-coefficient/
-# for details of this function
-def binomialCoeff(n, k) :
-	res = 1
-	if (k > n - k) :
-		k = n - k
-	for i in range(0 , k) :
-		res = res * (n - i)
-		res = res // (i + 1)
-	
-	return res
+	for line in range(1, n + 1):
+		C = 1; # used to represent C(line, i)
+		for i in range(1, line + 1):
+			
+			# The first value in a
+			# line is always 1
+			print(C, end = " ");
+			C = int(C * (line - i) / i);
+		print("");
 
-# Driver program
-n = 5
-printPascal(n)
+# Driver code
+n = 5;
+printPascal(n);
