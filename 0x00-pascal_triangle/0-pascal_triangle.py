@@ -13,8 +13,11 @@ def pascal_triangle(n):
 
     return triangle
 
-# Example usage:
-n = 5
-result = pascal_triangle(n)
-for row in result:
-    print(row)
+# Get the number of rows from the user
+try:
+    n = int(input("Enter the number of rows for Pascal's triangle: "))
+    result = pascal_triangle(n)
+    for row in result:
+        print(row)
+except ValueError:
+    print("Please enter a valid integer for the number of rows.")
