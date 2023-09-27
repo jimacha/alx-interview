@@ -1,19 +1,16 @@
-# A O(n^2) time and O(1) extra
-# space method for Pascal's Triangle
+# pascaltriangle.py
 
-# Pascal function
-def printPascal(n):
+def pascal_triangle(n):
+    if n <= 0:
+        return []
 
-	for line in range(1, n + 1):
-		C = 1; # used to represent C(line, i)
-		for i in range(1, line + 1):
-			
-			# The first value in a
-			# line is always 1
-			print(C, end = " ");
-			C = int(C * (line - i) / i);
-		print("");
+    triangle = []
+    for i in range(n):
+        row = [1]  # First element in each row is always 1
+        if triangle:
+            last_row = triangle[-1]
+            row.extend([last_row[j] + last_row[j + 1] for j in range(len(last_row) - 1)])
+            row.append(1)  # Last element in each row is always 1
+        triangle.append(row)
 
-# Driver code
-n = 5;
-printPascal(n);
+    return triangle
