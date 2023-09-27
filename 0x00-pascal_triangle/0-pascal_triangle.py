@@ -1,23 +1,36 @@
-def pascal_triangle(n):
-    if n <= 0:
-        return []
+# program for
+# Pascal's Triangle
 
-    triangle = []
-    for i in range(n):
-        row = [1]  # First element in each row is always 1
-        if triangle:
-            last_row = triangle[-1]
-            row.extend([last_row[j] + last_row[j + 1] for j in range(len(last_row) - 1)])
-            row.append(1)  # Last element in each row is always 1
-        triangle.append(row)
+# Function to print
+# first n lines of
+# Pascal's Triangle
+def printPascal(n) :
+	
+	# Iterate through every line
+	# and print entries in it
+	for line in range(0, n) :
+		
+		# Every line has number of
+		# integers equal to line
+		# number
+		for i in range(0, line + 1) :
+			print(binomialCoeff(line, i),
+				" ", end = "")
+		print()
+	
 
-    return triangle
+# See https://www.geeksforgeeks.org/space-and-time-efficient-binomial-coefficient/
+# for details of this function
+def binomialCoeff(n, k) :
+	res = 1
+	if (k > n - k) :
+		k = n - k
+	for i in range(0 , k) :
+		res = res * (n - i)
+		res = res // (i + 1)
+	
+	return res
 
-# Get the number of rows from the user
-try:
-    n = int(input("Enter the number of rows for Pascal's triangle: "))
-    result = pascal_triangle(n)
-    for row in result:
-        print(row)
-except ValueError:
-    print("Please enter a valid integer for the number of rows.")
+# Driver program
+n = 5
+printPascal(n)
