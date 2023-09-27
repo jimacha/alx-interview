@@ -27,3 +27,12 @@ def pascal_triangle(n):
 
     # Return the generated Pascal's triangle
     return triangle
+
+def print_triangle(triangle):
+    # Helper function to print the triangle
+    for row in triangle:
+        print("[{}]".format(",".join([str(x) for x in row])))
+
+if __name__ == "__main__":
+    # When the script is run, it prints Pascal's triangle up to the 5th row
+    print_triangle(pascal_triangle(5))
