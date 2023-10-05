@@ -6,6 +6,9 @@ Using prototype: def canUnlockAll(boxes)
 
 
 def canUnlockAll(boxes):
+    """
+    Check if boxes can be unlocked
+    """
     if not boxes or len(boxes) == 0:
         return False
 
