@@ -12,11 +12,11 @@ def canUnlockAll(boxes):
     if not boxes or len(boxes) == 0:
         return False
 
-    keys = set(boxes[0])  # Start with keys from the first box
+    keys = set(boxes[0])
     visited = [False] * len(boxes)
     visited[0] = True
 
-    queue = [0]  # Use a queue for BFS traversal
+    queue = [0]
 
     while queue:
         box_index = queue.pop(0)
