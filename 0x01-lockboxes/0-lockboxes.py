@@ -6,24 +6,9 @@ Using prototype: def canUnlockAll(boxes)
 
 
 def canUnlockAll(boxes):
-    """
-    Check if boxes can be unlocked
-    """
-    if not boxes or len(boxes) == 0:
-        return False
-
-    keys = set(boxes[0])
-    visited = [False] * len(boxes)
-    visited[0] = True
-
-    queue = [0]
-
-    while queue:
-        box_index = queue.pop(0)
-        for key in boxes[box_index]:
-            if key not in keys and 0 <= key < len(boxes):
-                keys.add(key)
-                queue.append(key)
-                visited[key] = True
-
-    return all(visited)
+    keys = [0]  # The first box is unlocked by default
+    for key in keys:
+        for box in boxes[key]:
+            if box not in keys and box < len(boxes):
+                keys.append(box)
+    return len(keys) == len(boxes)
